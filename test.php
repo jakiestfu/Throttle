@@ -6,17 +6,16 @@ require('throttle.php');
 
 $throttleKey = 'rateLimitYo';
 
-if(isset($_GET['doSomething']))
-{
-  throttle(array(
+if(isset($_GET['doSomething'])){
+	throttle(array(
 		'throttleKey' 	=> $throttleKey,
-	    'id'        	=> 'submit-comment',
-	    'timeout'   	=> 60,	// Throttle user for 60 seconds
-	    'passes'    	=> 3,	// if they attemps this action MORE than 3 times
-	    'interval'  	=> 15,	// within 15 seconds
-	    'throttled' 	=> function($seconds){ // They've been throttles
-	        die("Cannot login, you've been throttled, baby. ".$seconds." seconds left. <a href=\"javascript:window.location.reload()\">Refresh</a>");
-	    }
+		'id'        	=> 'submit-comment',
+		'timeout'   	=> 60,	// Throttle user for 60 seconds
+		'passes'    	=> 3,	// if they attemps this action MORE than 3 times
+		'interval'  	=> 15,	// within 15 seconds
+		'throttled' 	=> function($seconds){ // They've been throttles
+			die("Cannot login, you've been throttled, baby. ".$seconds." seconds left. <a href=\"javascript:window.location.reload()\">Refresh</a>");
+		}
 	));
 	// Continue Code
 }
