@@ -4,6 +4,8 @@ A PHP function that can be used to throttle any actions you want, as to prevent 
 
 Personally, I've found this script to work best with Ajax requests, but truly, you can use it for almost anything.
 
+PHP 5.3 is a minimum requirement as anonymous functions are used.
+
 ## Usage
 
 ```php
