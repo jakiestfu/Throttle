@@ -13,11 +13,11 @@ function throttle($opts){
 		
 		if(isset($_SESSION[$throttleKey][$id]['allowed'])){
 			
-			$allowedTime = $now + ($timeout*60);
+			$allowedTime = $now + ($timeout * 60);
 			$timeLeft = $now - $_SESSION[$throttleKey][$id]['allowed'];
 			$secondsLeft = ($timeLeft*(-1));
 			
-			if($timeLeft<0){
+			if($timeLeft < 0){
 		        $throttled($secondsLeft);
 			} else {
 		        unset($_SESSION[$throttleKey][$id]);
@@ -43,7 +43,7 @@ function throttle($opts){
 			if(isset($_SESSION[$throttleKey][$id]['pass'])){
 		        $_SESSION[$throttleKey][$id]['pass']++;
 			} else {
-		        $_SESSION[$throttleKey][$id]['pass']=1;
+		        $_SESSION[$throttleKey][$id]['pass'] = 1;
 			}
 			
 			if($_SESSION[$throttleKey][$id]['pass']==($passes)){
