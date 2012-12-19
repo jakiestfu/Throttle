@@ -9,6 +9,9 @@ PHP 5.3 is a minimum requirement as anonymous functions are used.
 ## Usage
 
 ```php
+
+session_start();
+
 $canPost = true;
 
 throttle(array(
@@ -34,6 +37,9 @@ if(!$canPost){
 ## Ajax Usage
 
 ```php
+
+session_start();
+
 throttle(array(
 	'throttleKey' 	=> $throttleKey,
 	'id'        	=> 'submit-comment',
