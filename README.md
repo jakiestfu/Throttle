@@ -7,6 +7,8 @@ Personally, I've found this script to work best with Ajax requests, but truly, y
 ## Usage
 
 ```php
+$canPost = true;
+$seconds = 0;
 rateThrottle(array(
 	'throttleKey' 	=> $throttleKey,
 	'id'        	=> 'submit-comment',
@@ -14,8 +16,48 @@ rateThrottle(array(
 	'passes'    	=> 3,	// if they attemps this action MORE than 3 times
 	'interval'  	=> 15,	// within 15 seconds
 	'throttled' 	=> function($seconds){ // They've been throttles
-		die("Cannot login, you've been throttled, baby. ".$seconds." seconds left. <a href=\"javascript:window.location.reload()\">Refresh</a>");
+		$canPost = false;
+		$seconds = $seconds;
 	}
 ));
-// Submit Comment code here
+
+if(!$canPost){
+	echo "Hey, you're posting to quickly. Try again in $seconds seconds.";
+} else {
+	// Post Comment
+}
+
 ```
+
+## Parameters
+
+* throttleKey: String, an identifier/key for the throttler to work with in the `$_SESSION` array
+* id: String, unique identifier for whatever action you're performing, so the throttler can keep track of multiple actions
+* timeout: Int, the length in seconds to disallow the user from doing an action if they have been throttled
+* passes: Int, number of times the user can do this action BEFORE they are throttled
+* interval: Int, number of seconds a user must do action in in order to be throttled
+* throttled: Function, the function that will be executed if the user has been throttled. Number of seconds left of timeout is passed as a parameter.
+
+## Licensing
+`````
+Copyright (c) 2012 Jacob Kelley, @jakiestfu, http://jakiestfu.com
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+`````
