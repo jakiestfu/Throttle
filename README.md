@@ -41,7 +41,7 @@ rateThrottle(array(
 	'throttled' 	=> function($seconds){ // They've been throttled
 		echo json_encode(array(
 			'success' => false,
-			'reason' => "Hey, you're posting to quickly. Try again in $timeLeft seconds."
+			'reason' => "Hey, you're posting to quickly. Try again in $seconds seconds."
 		)); die();
 	}
 ));
