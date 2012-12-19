@@ -24,7 +24,8 @@ function throttle($opts){
 		        unset($_SESSION[$throttleKey][$id]);
 		        $_SESSION[$throttleKey][$id]['pass'] = 1;
 		        $_SESSION[$throttleKey][$id]['setAt'] = $now;
-		                
+		      
+              
 		        if($_SESSION[$throttleKey][$id]['pass']==($passes)){
 		                $_SESSION[$throttleKey][$id]['allowed'] = $now + ($timeout);
 		        }
