@@ -8,7 +8,7 @@ $throttleKey = 'rateLimitYo';
 
 if(isset($_GET['doSomething']))
 {
-  rateThrottle(array(
+  throttle(array(
 		'throttleKey' 	=> $throttleKey,
 	    'id'        	=> 'submit-comment',
 	    'timeout'   	=> 60,	// Throttle user for 60 seconds
