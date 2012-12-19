@@ -1,6 +1,6 @@
 <?PHP
 
-function rateThrottle($opts){
+function throttle($opts){
   if(is_array($opts) && isset($opts['id']) && isset($opts['throttled'])){
 	                
 		$now = time();  
