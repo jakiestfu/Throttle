@@ -6,6 +6,7 @@ function throttle($opts){
 		$now = time();  
 		extract($opts);
 		
+		
 		$passes = (isset($passes)) ? $passes : 1;
 		$timeout = (isset($timeout)) ? $timeout : 60;
 		$interval = (isset($interval)) ? $interval : 20;
