@@ -4,12 +4,11 @@ session_start();
 
 require('throttle.php');
 
-$throttleKey = 'rateLimitYo';
 
-if(isset($_GET['doSomething'])){
+if(isset($_GET['postComment'])){
 	throttle(array(
-		'throttleKey' 	=> $throttleKey,
-		'id'        	=> 'submit-comment',
+		'throttleKey' 	=> 'rateLimitYo',
+		'id'        	=> 'submit-comment', // ID for the action you're trying to accomplish
 		'timeout'   	=> 60,	// Throttle user for 60 seconds
 		'passes'    	=> 3,	// if they attemps this action MORE than 3 times
 		'interval'  	=> 15,	// within 15 seconds
@@ -28,7 +27,7 @@ if(isset($_GET['doSomething'])){
 	</head>
 	<body>
 		<p>Here is an example of the rate throttler. If you click "Submit Comment" link below <b>more</b> than 3 times within 15 seconds, you will see a message throttling you for 60 seconds.</p>
-		<a href="?doSomething">Submit Comment</a>
-		<?PHP echo '<pre>'.print_r($_SESSION[$throttleKey], true).'</pre>'; ?>
+		<a href="?postComment">Submit Comment</a>
+		<?PHP echo '<pre>'.print_r($_SESSION, true).'</pre>'; ?>
 	</body>
 </html>
