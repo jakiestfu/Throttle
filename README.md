@@ -11,7 +11,7 @@ PHP 5.3 is a minimum requirement as anonymous functions are used.
 ```php
 $canPost = true;
 
-rateThrottle(array(
+throttle(array(
 	'throttleKey' 	=> $throttleKey,
 	'id'        	=> 'submit-comment',
 	'timeout'   	=> 60,	// Throttle user for 60 seconds
@@ -34,7 +34,7 @@ if(!$canPost){
 ## Ajax Usage
 
 ```php
-rateThrottle(array(
+throttle(array(
 	'throttleKey' 	=> $throttleKey,
 	'id'        	=> 'submit-comment',
 	'timeout'   	=> 60,	// Throttle user for 60 seconds
