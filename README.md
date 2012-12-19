@@ -9,6 +9,7 @@ Personally, I've found this script to work best with Ajax requests, but truly, y
 ```php
 $canPost = true;
 $seconds = 0;
+
 rateThrottle(array(
 	'throttleKey' 	=> $throttleKey,
 	'id'        	=> 'submit-comment',
