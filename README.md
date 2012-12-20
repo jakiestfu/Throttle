@@ -15,7 +15,6 @@ session_start();
 $canPost = true;
 
 throttle(array(
-	'throttleKey' 	=> $throttleKey,
 	'id'        	=> 'submit-comment',
 	'timeout'   	=> 60,	// Throttle user for 60 seconds
 	'passes'    	=> 3,	// if they attemps this action MORE than 3 times
@@ -41,7 +40,6 @@ if(!$canPost){
 session_start();
 
 throttle(array(
-	'throttleKey' 	=> $throttleKey,
 	'id'        	=> 'submit-comment',
 	'timeout'   	=> 60,	// Throttle user for 60 seconds
 	'passes'    	=> 3,	// if they attemps this action MORE than 3 times
